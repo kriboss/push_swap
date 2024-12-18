@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/17 19:44:49 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/17 22:07:50 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	indexing(Node **a)
 	Node	*tmp;
 	int		i;
 
+	if (!a || !*a)
+		return;
 	i = 0;
 	tmp = *a;
 	while (tmp)

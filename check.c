@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:38:50 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/17 17:42:49 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/17 22:18:10 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int	check(Node **a)
 {
-	while(*a)
+	Node *temp = *a;
+	while(temp && temp->next)
 	{
-		if((*a)->value > (*a)->next->value)
+		if(temp->value > temp->next->value)
 		{
 			return (0);
 		}
+		temp = temp->next;
 	}
 	return (1);
 }

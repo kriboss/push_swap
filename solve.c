@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:44:40 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/17 19:49:46 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/17 22:37:10 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	solve(Node **a, Node **b)
 {
+	Node	*temp;
+	
 	while(check(a) == 0)
 	{
 		if((*a)->value > (*a)->next->value)
@@ -22,11 +24,20 @@ void	solve(Node **a, Node **b)
 			sa(a);
 			printf("sa\n");
 		}
-		else
+		
+		if (check(a) == 0)
 		{
-			ra(a);
-			printf("ra\n");
+			rra(a);
+			printf("rra\n");
 		}
 		indexing(a);
+
+		temp = *a;
+		while (temp)
+		{
+			printf("%i index %i; ", temp->value, temp->index);
+			temp = temp->next;
+		}
+		printf("\n");
 	}
 }

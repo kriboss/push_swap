@@ -6,12 +6,13 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:40 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/17 19:48:47 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/18 00:00:59 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+#include <fcntl.h>
 
 void test_sa(Node **a)
 {
@@ -117,8 +118,15 @@ Node	*create_stack(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	Node *a;
-	Node *b;
+	Node	*a;
+	Node	*b;
+	int		fd;
+
+	if(argc == 1)
+	{
+		printf("Error\n");
+		return (0);
+	}
 
 	a = create_stack(argc, argv);
 	b = NULL;
@@ -127,7 +135,7 @@ int main(int argc, char *argv[])
 	Node *temp = a;
 	while (temp)
 	{
-		printf("value %i, index %i", temp->value, temp->index);
+		printf("%i index %i; ", temp->value, temp->index);
 		temp = temp->next;
 	}
 	printf("\n");
@@ -135,12 +143,11 @@ int main(int argc, char *argv[])
 	temp = b;
 	while (temp)
 	{
-		printf("value %i, index %i", temp->value, temp->index);
+		printf("%i index %i; ", temp->value, temp->index);
 		temp = temp->next;
 	}
 	printf("\n");
 
 	solve(&a, &b);
-
 	return (0);
 }
