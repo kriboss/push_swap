@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:44:40 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/17 22:37:10 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/18 10:48:41 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	solve(Node **a, Node **b)
 			rra(a);
 			printf("rra\n");
 		}
+		
 		indexing(a);
 
 		temp = *a;

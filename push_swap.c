@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:40 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/18 00:00:59 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:07:51 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,22 @@ int main(int argc, char *argv[])
 		temp = temp->next;
 	}
 	printf("\n");
-
-	solve(&a, &b);
+	radix(&a, &b);
+	printf("Initial lists:\n");
+	printf("List a: ");
+	temp = a;
+	while (temp)
+	{
+		printf("%i index %i; ", temp->value, temp->index);
+		temp = temp->next;
+	}
+	printf("\n");
+	printf("List b: ");
+	temp = b;
+	while (temp)
+	{
+		printf("%i index %i; ", temp->value, temp->index);
+		temp = temp->next;
+	}
 	return (0);
 }

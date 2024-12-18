@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/17 22:07:50 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:14:53 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,21 @@ Node	*ft_lstnew(int value, int index)
 	new->index = index;
 	new->next = NULL;
 	return (new);
+}
+
+int		ft_lstsize(Node **a)
+{
+	Node	*tmp;
+	int		n;
+
+	tmp = *a;
+	n = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		n++;
+	}
+	return (n);
 }
 
 void	indexing(Node **a)

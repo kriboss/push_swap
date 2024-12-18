@@ -14,6 +14,7 @@ void	ra(Node **a)
 		last = last->next;
 	last->next = tmp;
 	tmp->next = NULL;
+	write(1, "ra\n", 3);
 }
 
 void	rb(Node **b)
@@ -30,10 +31,12 @@ void	rb(Node **b)
 		last = last->next;
 	last->next = tmp;
 	tmp->next = NULL;
+	write(1, "rb\n", 3);
 }
 
 void	rr(Node **a, Node **b)
 {
 	ra(a);
 	rb(b);
+	write(1, "rr\n", 3);
 }

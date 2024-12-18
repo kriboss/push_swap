@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:29:05 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/17 16:31:45 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:05:03 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	pa(Node **a, Node **b)
 	*b = (*b)->next;
 	tmp->next = *a;
 	*a = tmp;
+	write(1, "pa\n", 3);
 }
 
 void	pb(Node **a, Node **b)
@@ -34,4 +35,5 @@ void	pb(Node **a, Node **b)
 	*a = (*a)->next;
 	tmp->next = *b;
 	*b = tmp;
+	write(1, "pb\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:44 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/17 17:21:28 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:07:04 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,18 @@ void	swap(Node *stack)
 void	sa(Node **a)
 {
 	swap(*a);
+	write(1, "sa\n", 3);
 }
 
 void	sb(Node **b)
 {
 	swap(*b);
+	write(1, "sb\n", 3);
 }
 
 void	ss(Node **a, Node **b)
 {
 	swap(*a);
 	swap(*b);
+	write(1, "ss\n", 3);
 }

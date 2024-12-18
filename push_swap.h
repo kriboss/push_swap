@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:20 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/17 19:51:39 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:38:26 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ typedef struct Node
 }	Node;
 
 Node	*ft_lstnew(int value, int index);
+int		ft_lstsize(Node **a);
 void	indexing(Node **a);
-int	ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 void	sa(Node **a);
 void	sb(Node **b);
 void	ss(Node **a, Node **b);
@@ -38,6 +39,7 @@ void	rrb(Node **b);
 void	rrr(Node **a, Node **b);
 
 int		check(Node **a);
+void	radix(Node **a, Node **b);
 void	solve(Node **a, Node **b);
 
 #endif
