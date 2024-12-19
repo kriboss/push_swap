@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/18 14:14:53 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/19 18:14:55 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Node	*ft_lstnew(int value, int index)
 	return (new);
 }
 
-int		ft_lstsize(Node **a)
+int	ft_lstsize(Node **a)
 {
 	Node	*tmp;
 	int		n;
@@ -46,7 +46,7 @@ void	indexing(Node **a)
 	int		i;
 
 	if (!a || !*a)
-		return;
+		return ;
 	i = 0;
 	tmp = *a;
 	while (tmp)

@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:44 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/18 14:07:04 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/19 18:58:15 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	swap(Node *stack)
 {
 	int	tmp;
+
 	tmp = stack->value;
 	stack->value = stack->next->value;
 	stack->next->value = tmp;
