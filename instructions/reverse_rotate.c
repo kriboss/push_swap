@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 18:57:33 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/19 18:57:50 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/25 21:37:10 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,25 @@ void	rrb(Node **b)
 	write(1, "rrb\n", 4);
 }
 
+void	do_rrr(Node **ab)
+{
+	Node	*tmp;
+	Node	*last;
+
+	if (!*ab || !(*ab)->next)
+		return ;
+	tmp = *ab;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	last = tmp->next;
+	tmp->next = NULL;
+	last->next = *ab;
+	*ab = last;
+}
+
 void	rrr(Node **a, Node **b)
 {
-	rra(a);
-	rrb(b);
+	do_rrr(a);
+	do_rrr(b);
 	write(1, "rrr\n", 4);
 }

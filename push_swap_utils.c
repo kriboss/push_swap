@@ -6,55 +6,64 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/19 18:14:55 by kbossio          ###   ########.fr       */
+/*   Updated: 2024/12/24 00:52:32 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-Node	*ft_lstnew(int value, int index)
+int	check(Node **a)
 {
-	Node	*new;
+	Node	*temp;
 
-	new = (Node *)malloc(sizeof(Node));
-	if (!new)
-		return (NULL);
-	new->value = value;
-	new->index = index;
-	new->next = NULL;
-	return (new);
-}
-
-int	ft_lstsize(Node **a)
-{
-	Node	*tmp;
-	int		n;
-
-	tmp = *a;
-	n = 0;
-	while (tmp)
+	temp = *a;
+	while (temp && temp->next)
 	{
-		tmp = tmp->next;
-		n++;
+		if (temp->value > temp->next->value)
+		{
+			return (0);
+		}
+		temp = temp->next;
 	}
-	return (n);
+	return (1);
 }
 
-void	indexing(Node **a)
+void	ranking(Node **a)
 {
 	Node	*tmp;
+	Node	*find_max;
 	int		i;
 
-	if (!a || !*a)
-		return ;
-	i = 0;
 	tmp = *a;
 	while (tmp)
 	{
-		tmp->index = i;
+		find_max = *a;
+		i = 1;
+		while (find_max)
+		{
+			if (tmp->value > find_max->value)
+				i++;
+			find_max = find_max->next;
+		}
+		tmp->rank = i;
 		tmp = tmp->next;
-		i++;
 	}
+}
+
+int	check_index(Node **a, Node **b, Node *best)
+{
+	int	index;
+	int	t_index;
+
+	index = best->index;
+	t_index = best->t_index;
+	if (index > ft_lstsize(b) / 2 && t_index > ft_lstsize(a) / 2)
+		return (3);
+	if (index > ft_lstsize(b) / 2)
+		return (1);
+	if (t_index > ft_lstsize(a) / 2)
+		return (0);
+	return (2);
 }
 
 int	ft_atoi(const char *str)
