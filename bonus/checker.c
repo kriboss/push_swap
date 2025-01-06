@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 00:09:39 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/27 00:24:24 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/06 01:15:23 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	checker(int argc, char *argv[])
 		{
 			write(1, "Error\n", 6);
 			free_lst(&a);
+			if (ft_lstsize(&b) > 0)
+				free_lst(&b);
 			return ;
 		}
 	}
