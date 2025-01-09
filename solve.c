@@ -6,19 +6,17 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:33:46 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/25 21:50:45 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:25:25 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	setup(Node **a, Node **b)
+void	setup(t_Node **a, t_Node **b)
 {
-	Node	*tmp;
 	int		a_size;
 
 	ranking(a);
-	tmp = *a;
 	a_size = ft_lstsize(a);
 	while (ft_lstsize(a) >= a_size / 2 + 1)
 	{
@@ -32,10 +30,10 @@ void	setup(Node **a, Node **b)
 	sort3(a);
 }
 
-void	get_target_value(Node **a, Node **b)
+void	get_target_value(t_Node **a, t_Node **b)
 {
-	Node	*numbers;
-	Node	*tmp;
+	t_Node	*numbers;
+	t_Node	*tmp;
 	int		pos;
 
 	tmp = *a;
@@ -56,10 +54,10 @@ void	get_target_value(Node **a, Node **b)
 	}
 }
 
-void	get_cost(Node **a, Node **b)
+void	get_cost(t_Node **a, t_Node **b)
 {
-	Node	*tmpa;
-	Node	*tmpb;
+	t_Node	*tmpa;
+	t_Node	*tmpb;
 	int		i;
 	int		j;
 
@@ -91,10 +89,10 @@ void	get_cost(Node **a, Node **b)
 	}
 }
 
-void	best_move(Node **a, Node **b)
+void	best_move(t_Node **a, t_Node **b)
 {
-	Node	*tmp;
-	Node	*best;
+	t_Node	*tmp;
+	t_Node	*best;
 	int		lowest;
 
 	tmp = *b;
@@ -134,11 +132,8 @@ void	best_move(Node **a, Node **b)
 	}
 }
 
-void	solve(Node **a, Node **b)
+void	solve(t_Node **a, t_Node **b)
 {
-	Node	*tmp;
-	int		i;
-
 	setup(a, b);
 	while (*b)
 	{

@@ -6,17 +6,17 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:38:50 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/25 21:02:06 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:12:06 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-Node	*ft_lstnew(int value)
+t_Node	*ft_lstnew(int value)
 {
-	Node	*new;
+	t_Node	*new;
 
-	new = (Node *)malloc(sizeof(Node));
+	new = (t_Node *)malloc(sizeof(t_Node));
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -24,9 +24,9 @@ Node	*ft_lstnew(int value)
 	return (new);
 }
 
-void	free_lst(Node **a)
+void	free_lst(t_Node **a)
 {
-	Node	*tmp;
+	t_Node	*tmp;
 
 	tmp = *a;
 	while (tmp)
@@ -37,9 +37,9 @@ void	free_lst(Node **a)
 	*a = NULL;
 }
 
-Node	*ft_lstlast(Node **a)
+t_Node	*ft_lstlast(t_Node **a)
 {
-	Node	*tmp;
+	t_Node	*tmp;
 
 	tmp = *a;
 	if (!tmp)
@@ -51,10 +51,10 @@ Node	*ft_lstlast(Node **a)
 	return (tmp);
 }
 
-Node	*getmax(Node **a)
+t_Node	*getmax(t_Node **a)
 {
-	Node	*tmp;
-	Node	*max;
+	t_Node	*tmp;
+	t_Node	*max;
 
 	tmp = *a;
 	max = tmp;
@@ -67,9 +67,9 @@ Node	*getmax(Node **a)
 	return (max);
 }
 
-int	ft_lstsize(Node **a)
+int	ft_lstsize(t_Node **a)
 {
-	Node	*tmp;
+	t_Node	*tmp;
 	int		n;
 
 	tmp = *a;

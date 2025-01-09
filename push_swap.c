@@ -6,19 +6,45 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:40 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/25 21:47:04 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:23:45 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-Node	*create_stack(int argc, char *argv[])
+int	check_input(int argc, char *argv[])
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	if (argc < 2)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	while (argv[i] != NULL)
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if ((argv[i][j] < '0' || argv[i][j] > '9')
+				&& argv[i][j] != '-' && argv[i][j] != '+')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+t_Node	*create_stack(int argc, char *argv[])
 {
 	int		*numbers;
 	int		i;
-	Node	*a;
-	Node	*tmp;
+	t_Node	*a;
+	t_Node	*tmp;
 
 	a = NULL;
 	i = 0;
@@ -50,34 +76,14 @@ Node	*create_stack(int argc, char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	Node	*a;
-	Node	*b;
-	Node	*tmp;
+	t_Node	*a;
+	t_Node	*b;
+	t_Node	*tmp;
 	int		i;
-	int		j;
 
 	i = 1;
-	j = 0;
-	if (argc < 2)
-	{
-		printf("Error\n");
+	if (check_input(argc, argv))
 		return (1);
-	}
-	while (argv[i] != NULL)
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9')
-				&& argv[i][j] != '-' && argv[i][j] != '+')
-			{
-				printf("Error\n");
-				return (1);
-			}
-			j++;
-		}
-		i++;
-	}
 	a = create_stack(argc, argv);
 	b = NULL;
 	tmp = a;

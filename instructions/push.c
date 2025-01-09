@@ -6,15 +6,15 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:29:05 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/21 15:12:59 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:12:12 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(Node **a, Node **b)
+void	pa(t_Node **a, t_Node **b)
 {
-	Node	*tmp;
+	t_Node	*tmp;
 
 	if (!*b)
 		return ;
@@ -25,9 +25,9 @@ void	pa(Node **a, Node **b)
 	write(1, "pa\n", 3);
 }
 
-void	pb(Node **a, Node **b)
+void	pb(t_Node **a, t_Node **b)
 {
-	Node	*tmp;
+	t_Node	*tmp;
 
 	if (!*a)
 		return ;

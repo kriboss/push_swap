@@ -6,16 +6,16 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 18:57:33 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/25 21:37:10 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:12:15 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(Node **a)
+void	rra(t_Node **a)
 {
-	Node	*tmp;
-	Node	*last;
+	t_Node	*tmp;
+	t_Node	*last;
 
 	if (!*a || !(*a)->next)
 		return ;
@@ -29,10 +29,10 @@ void	rra(Node **a)
 	write(1, "rra\n", 4);
 }
 
-void	rrb(Node **b)
+void	rrb(t_Node **b)
 {
-	Node	*tmp;
-	Node	*last;
+	t_Node	*tmp;
+	t_Node	*last;
 
 	if (!*b || !(*b)->next)
 		return ;
@@ -46,10 +46,10 @@ void	rrb(Node **b)
 	write(1, "rrb\n", 4);
 }
 
-void	do_rrr(Node **ab)
+void	do_rrr(t_Node **ab)
 {
-	Node	*tmp;
-	Node	*last;
+	t_Node	*tmp;
+	t_Node	*last;
 
 	if (!*ab || !(*ab)->next)
 		return ;
@@ -62,7 +62,7 @@ void	do_rrr(Node **ab)
 	*ab = last;
 }
 
-void	rrr(Node **a, Node **b)
+void	rrr(t_Node **a, t_Node **b)
 {
 	do_rrr(a);
 	do_rrr(b);

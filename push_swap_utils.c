@@ -6,15 +6,15 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/24 00:52:32 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:22:49 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check(Node **a)
+int	check(t_Node **a)
 {
-	Node	*temp;
+	t_Node	*temp;
 
 	temp = *a;
 	while (temp && temp->next)
@@ -28,10 +28,10 @@ int	check(Node **a)
 	return (1);
 }
 
-void	ranking(Node **a)
+void	ranking(t_Node **a)
 {
-	Node	*tmp;
-	Node	*find_max;
+	t_Node	*tmp;
+	t_Node	*find_max;
 	int		i;
 
 	tmp = *a;
@@ -50,7 +50,7 @@ void	ranking(Node **a)
 	}
 }
 
-int	check_index(Node **a, Node **b, Node *best)
+int	check_index(t_Node **a, t_Node **b, t_Node *best)
 {
 	int	index;
 	int	t_index;

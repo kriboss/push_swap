@@ -6,13 +6,13 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:44 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/21 14:52:45 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:12:22 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(Node *stack)
+void	swap(t_Node *stack)
 {
 	int	tmp;
 
@@ -21,19 +21,19 @@ void	swap(Node *stack)
 	stack->next->value = tmp;
 }
 
-void	sa(Node **a)
+void	sa(t_Node **a)
 {
 	swap(*a);
 	write(1, "sa\n", 3);
 }
 
-void	sb(Node **b)
+void	sb(t_Node **b)
 {
 	swap(*b);
 	write(1, "sb\n", 3);
 }
 
-void	ss(Node **a, Node **b)
+void	ss(t_Node **a, t_Node **b)
 {
 	swap(*a);
 	swap(*b);

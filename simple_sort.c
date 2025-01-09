@@ -6,21 +6,21 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:57:19 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/25 21:41:16 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:11:51 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort2(Node **a)
+void	sort2(t_Node **a)
 {
 	if ((*a)->value > (*a)->next->value)
 		sa(a);
 }
 
-void	sort3(Node **a)
+void	sort3(t_Node **a)
 {
-	Node	*tmp;
+	t_Node	*tmp;
 	int		i;
 
 	tmp = *a;
@@ -41,13 +41,13 @@ void	sort3(Node **a)
 		sa(a);
 }
 
-void	sort4(Node **a, Node **b)
+void	sort4(t_Node **a, t_Node **b)
 {
 	pb(a, b);
 	sort3(a);
 }
 
-void	sort5(Node **a, Node **b)
+void	sort5(t_Node **a, t_Node **b)
 {
 	pb(a, b);
 	pb(a, b);
@@ -58,7 +58,7 @@ void	sort5(Node **a, Node **b)
 		sa(a);
 }
 
-void	simple_sort(Node **a, Node **b)
+void	simple_sort(t_Node **a, t_Node **b)
 {
 	if (ft_lstsize(a) == 2)
 		sort2(a);

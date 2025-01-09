@@ -6,51 +6,51 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 20:51:34 by kbossio           #+#    #+#             */
-/*   Updated: 2024/12/27 00:21:22 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 13:14:05 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "/get_next_line/get_next_line.h"
+# include "get_next_line/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct Node
+typedef struct s_Node
 {
-	int rank;
-	int	index;
-	int value;
-	int	t_value;
-	int	t_index;
-	int	cost;
-	struct Node	*next;
-}	Node;
+	int				rank;
+	int				index;
+	int				value;
+	int				t_value;
+	int				t_index;
+	int				cost;
+	struct s_Node	*next;
+}	t_Node;
 
-Node	*ft_lstnew(int value);
-void	free_lst(Node **a);
-Node	*ft_lstlast(Node **a);
-Node	*getmax(Node **a);
-int		ft_lstsize(Node **a);
-void	ranking(Node **a);
-int		check_index(Node **a, Node **b, Node *best);
+t_Node	*ft_lstnew(int value);
+void	free_lst(t_Node **a);
+t_Node	*ft_lstlast(t_Node **a);
+t_Node	*getmax(t_Node **a);
+int		ft_lstsize(t_Node **a);
+void	ranking(t_Node **a);
+int		check_index(t_Node **a, t_Node **b, t_Node *best);
 int		ft_atoi(const char *str);
-Node	*create_stack(int argc, char *argv[]);
-void	sa(Node **a);
-void	sb(Node **b);
-void	ss(Node **a, Node **b);
-void	pa(Node **a, Node **b);
-void	pb(Node **a, Node **b);
-void	ra(Node **a);
-void	rb(Node **b);
-void	rr(Node **a, Node **b);
-void	rra(Node **a);
-void	rrb(Node **b);
-void	rrr(Node **a, Node **b);
+t_Node	*create_stack(int argc, char *argv[]);
+void	sa(t_Node **a);
+void	sb(t_Node **b);
+void	ss(t_Node **a, t_Node **b);
+void	pa(t_Node **a, t_Node **b);
+void	pb(t_Node **a, t_Node **b);
+void	ra(t_Node **a);
+void	rb(t_Node **b);
+void	rr(t_Node **a, t_Node **b);
+void	rra(t_Node **a);
+void	rrb(t_Node **b);
+void	rrr(t_Node **a, t_Node **b);
 
-int		check(Node **a);
-void	solve(Node **a, Node **b);
-void	simple_sort(Node **a, Node **b);
-void	sort3(Node **a);
+int		check(t_Node **a);
+void	solve(t_Node **a, t_Node **b);
+void	simple_sort(t_Node **a, t_Node **b);
+void	sort3(t_Node **a);
 
 #endif
