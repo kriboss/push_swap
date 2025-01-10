@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 20:51:34 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/10 01:24:47 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/10 23:51:48 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,8 @@ int		check(t_Node **a);
 void	solve(t_Node **a, t_Node **b);
 void	simple_sort(t_Node **a, t_Node **b);
 void	sort3(t_Node **a);
+
+char	*ft_itoa(int n);
+int		check_input(int argc, char *argv[]);
 
 #endif

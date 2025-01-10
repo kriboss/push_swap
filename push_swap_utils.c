@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/10 01:24:25 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/11 00:41:26 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,44 +26,6 @@ int	check(t_Node **a)
 		temp = temp->next;
 	}
 	return (1);
-}
-
-void	ranking(t_Node **a)
-{
-	t_Node	*tmp;
-	t_Node	*find_max;
-	int		i;
-
-	tmp = *a;
-	while (tmp)
-	{
-		find_max = *a;
-		i = 1;
-		while (find_max)
-		{
-			if (tmp->value > find_max->value)
-				i++;
-			find_max = find_max->next;
-		}
-		tmp->rank = i;
-		tmp = tmp->next;
-	}
-}
-
-int	check_index(t_Node **a, t_Node **b, t_Node *best)
-{
-	int	index;
-	int	t_index;
-
-	index = best->index;
-	t_index = best->t_index;
-	if (index > ft_lstsize(b) / 2 && t_index > ft_lstsize(a) / 2)
-		return (3);
-	if (index > ft_lstsize(b) / 2)
-		return (1);
-	if (t_index > ft_lstsize(a) / 2)
-		return (0);
-	return (2);
 }
 
 int	ft_atoi(const char *str)
@@ -95,13 +57,55 @@ int	ft_atoi(const char *str)
 	return (num * segno);
 }
 
+int	check_index(t_Node **a, t_Node **b, t_Node *best)
+{
+	int	index;
+	int	t_index;
+
+	index = best->index;
+	t_index = best->t_index;
+	if (index > ft_lstsize(b) / 2 && t_index > ft_lstsize(a) / 2)
+		return (3);
+	if (index > ft_lstsize(b) / 2)
+		return (1);
+	if (t_index > ft_lstsize(a) / 2)
+		return (0);
+	return (2);
+}
+
+int	check_input(int argc, char *argv[])
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	if (argc < 2)
+	{
+		write(1, "Error\n", 6);
+		return (1);
+	}
+	while (argv[i] != NULL)
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if ((argv[i][j] < '0' || argv[i][j] > '9')
+				&& argv[i][j] != '-' && argv[i][j] != '+')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 t_Node	*create_stack(int argc, char *argv[])
 {
 	t_Node	*a;
 	t_Node	*tmp;
 	int		*numbers;
 	int		i;
-	
+
 	a = NULL;
 	numbers = (int *)malloc(sizeof(int) * (argc - 1));
 	if (!numbers)
@@ -122,29 +126,6 @@ t_Node	*create_stack(int argc, char *argv[])
 			ft_lstlast(&a)->next = tmp;
 		i++;
 	}
-	/*
-	while (i < argc - 1)
-	{
-		numbers[i] = ft_atoi(argv[i + 1]);
-		if (numbers[i] == 0 && argv[i + 1][0] != '0')
-		{
-			free(numbers);
-			return (NULL);
-		}
-		i++;
-	}
-	while (--i >= 0)
-	{
-		tmp = ft_lstnew(numbers[i]);
-		if (!a)
-			a = tmp;
-		else
-		{
-			tmp->next = a;
-			a = tmp;
-		}
-	}
-	*/
 	free(numbers);
 	return (a);
 }

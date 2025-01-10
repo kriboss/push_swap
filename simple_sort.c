@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:57:19 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/10 01:31:21 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/11 00:40:57 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,39 +43,45 @@ void	sort3(t_Node **a)
 
 void	sort4(t_Node **a, t_Node **b)
 {
-	while (ft_lstsize(a) > 3)
-		pb(a, b);
+	ranking(a);
+	pb(a, b);
 	sort3(a);
-	if ((*b)->value < (*a)->value)
-		pa(a, b);
-	else
+	while ((*b)->rank != ft_lstlast(a)->rank + 1 && (*b)->rank != 1)
 	{
-		ra(a);
-		pa(a, b);
-		rra(a);
+		if ((*b)->rank - 1 == (*a)->rank)
+			ra(a);
+		else
+			rra(a);
+	}
+	pa(a, b);
+	while (check(a) == 0)
+	{
+		if ((*a)->rank >= 3)
+			ra(a);
+		else
+			rra(a);
 	}
 }
 
 void	sort5(t_Node **a, t_Node **b)
 {
-	while (ft_lstsize(a) > 3)
-		pb(a, b);
-	sort3(a);
-	if ((*b)->value < (*a)->value)
-		pa(a, b);
-	else
+	ranking(a);
+	pb(a, b);
+	sort4(a, b);
+	while ((*b)->rank != ft_lstlast(a)->rank + 1 && (*b)->rank != 1)
 	{
-		ra(a);
-		pa(a, b);
-		rra(a);
+		if ((*b)->rank - 1 == (*a)->rank)
+			ra(a);
+		else
+			rra(a);
 	}
-	if ((*b)->value < (*a)->value)
-		pa(a, b);
-	else
+	pa(a, b);
+	while (check(a) == 0)
 	{
-		ra(a);
-		pa(a, b);
-		rra(a);
+		if ((*a)->rank >= 3)
+			ra(a);
+		else
+			rra(a);
 	}
 }
 

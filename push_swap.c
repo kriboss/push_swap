@@ -6,37 +6,33 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:40 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/10 01:32:24 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/11 00:38:40 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	check_input(int argc, char *argv[])
+void	ranking(t_Node **a)
 {
-	int	i;
-	int	j;
+	t_Node	*tmp;
+	t_Node	*find_max;
+	int		i;
 
-	i = 1;
-	if (argc < 2)
+	tmp = *a;
+	while (tmp)
 	{
-		write(1, "Error\n", 6);
-		return (1);
-	}
-	while (argv[i] != NULL)
-	{
-		j = 0;
-		while (argv[i][j])
+		find_max = *a;
+		i = 1;
+		while (find_max)
 		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9')
-				&& argv[i][j] != '-' && argv[i][j] != '+')
-				return (1);
-			j++;
+			if (tmp->value > find_max->value)
+				i++;
+			find_max = find_max->next;
 		}
-		i++;
+		tmp->rank = i;
+		tmp = tmp->next;
 	}
-	return (0);
 }
 
 int	main(int argc, char *argv[])
@@ -48,14 +44,17 @@ int	main(int argc, char *argv[])
 
 	i = 0;
 	if (check_input(argc, argv))
+	{
+		write(1, "Error\n", 6);
 		return (1);
+	}
 	numbers = (int *)malloc(sizeof(int) * (argc - 1));
 	if (!numbers)
 		return (1);
 	a = create_stack(argc, argv);
 	b = NULL;
-	t_Node	*tmp = a;
 	simple_sort(&a, &b);
+	t_Node	*tmp = a;
 	while (tmp)
 	{
 		printf("value: %d\n", tmp->value);
