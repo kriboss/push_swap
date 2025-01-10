@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/09 13:22:49 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/10 01:24:25 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,58 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (num * segno);
+}
+
+t_Node	*create_stack(int argc, char *argv[])
+{
+	t_Node	*a;
+	t_Node	*tmp;
+	int		*numbers;
+	int		i;
+	
+	a = NULL;
+	numbers = (int *)malloc(sizeof(int) * (argc - 1));
+	if (!numbers)
+		return (NULL);
+	i = 0;
+	while (argc-- > 1)
+	{
+		numbers[i] = ft_atoi(argv[i + 1]);
+		if (numbers[i] == 0 && argv[i + 1][0] != '0')
+		{
+			free(numbers);
+			return (NULL);
+		}
+		tmp = ft_lstnew(numbers[i]);
+		if (!a)
+			a = tmp;
+		else
+			ft_lstlast(&a)->next = tmp;
+		i++;
+	}
+	/*
+	while (i < argc - 1)
+	{
+		numbers[i] = ft_atoi(argv[i + 1]);
+		if (numbers[i] == 0 && argv[i + 1][0] != '0')
+		{
+			free(numbers);
+			return (NULL);
+		}
+		i++;
+	}
+	while (--i >= 0)
+	{
+		tmp = ft_lstnew(numbers[i]);
+		if (!a)
+			a = tmp;
+		else
+		{
+			tmp->next = a;
+			a = tmp;
+		}
+	}
+	*/
+	free(numbers);
+	return (a);
 }

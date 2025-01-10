@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:38:50 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/09 13:12:06 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 18:30:57 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ t_Node	*ft_lstnew(int value)
 void	free_lst(t_Node **a)
 {
 	t_Node	*tmp;
+	t_Node	*next;
 
 	tmp = *a;
 	while (tmp)
 	{
+		next = tmp->next;
 		free(tmp);
-		tmp = tmp->next;
+		tmp = next;
 	}
 	*a = NULL;
 }

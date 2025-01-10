@@ -6,11 +6,11 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:44 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/09 13:12:22 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/09 16:47:59 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	swap(t_Node *stack)
 {

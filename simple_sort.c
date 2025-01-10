@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:57:19 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/09 13:11:51 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/10 01:31:21 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,40 @@ void	sort3(t_Node **a)
 
 void	sort4(t_Node **a, t_Node **b)
 {
-	pb(a, b);
+	while (ft_lstsize(a) > 3)
+		pb(a, b);
 	sort3(a);
+	if ((*b)->value < (*a)->value)
+		pa(a, b);
+	else
+	{
+		ra(a);
+		pa(a, b);
+		rra(a);
+	}
 }
 
 void	sort5(t_Node **a, t_Node **b)
 {
-	pb(a, b);
-	pb(a, b);
+	while (ft_lstsize(a) > 3)
+		pb(a, b);
 	sort3(a);
-	pa(a, b);
-	pa(a, b);
-	if ((*a)->value > (*a)->next->value)
-		sa(a);
+	if ((*b)->value < (*a)->value)
+		pa(a, b);
+	else
+	{
+		ra(a);
+		pa(a, b);
+		rra(a);
+	}
+	if ((*b)->value < (*a)->value)
+		pa(a, b);
+	else
+	{
+		ra(a);
+		pa(a, b);
+		rra(a);
+	}
 }
 
 void	simple_sort(t_Node **a, t_Node **b)
