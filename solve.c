@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:33:46 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/11 00:20:12 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/19 17:56:40 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,36 +56,30 @@ void	get_target_value(t_Node **a, t_Node **b)
 
 void	get_cost(t_Node **a, t_Node **b)
 {
-	t_Node	*tmpa;
-	t_Node	*tmpb;
+	t_Node	*ta;
+	t_Node	*tb;
 	int		i;
 	int		j;
 
-	tmpa = *a;
+	ta = *a;
 	i = 0;
-	tmpb = *b;
-	while (tmpb)
+	tb = *b;
+	while (tb)
 	{
-		tmpa = *a;
-		tmpb->index = i;
-		tmpb->cost = 0;
-		j = 0;
-		while (tmpa && tmpb->t_value != tmpa->value)
-		{
-			j++;
-			tmpa = tmpa->next;
-		}
-		tmpb->t_index = j;
+		ta = *a;
+		tb->i = i;
+		j = get_tcost(ta, tb);
+		tb->t_i = j;
 		if (i > ft_lstsize(b) / 2 && j > ft_lstsize(a) / 2)
-			tmpb->cost = ft_lstsize(b) - tmpb->index + ft_lstsize(a) - 1 - tmpb->t_index;
+			tb->cost = ft_lstsize(b) - tb->i + ft_lstsize(a) - 1 - tb->t_i;
 		else if (i > ft_lstsize(b) / 2)
-			tmpb->cost = ft_lstsize(b) - tmpb->index + (tmpb->t_index + 1);
+			tb->cost = ft_lstsize(b) - tb->i + (tb->t_i + 1);
 		else if (j > ft_lstsize(a) / 2)
-			tmpb->cost = (ft_lstsize(a) - 1) - tmpb->t_index + tmpb->index;
+			tb->cost = (ft_lstsize(a) - 1) - tb->t_i + tb->i;
 		else
-			tmpb->cost = tmpb->index + tmpb->t_index + 1;
+			tb->cost = tb->i + tb->t_i + 1;
 		i++;
-		tmpb = tmpb->next;
+		tb = tb->next;
 	}
 }
 
@@ -107,29 +101,7 @@ void	best_move(t_Node **a, t_Node **b)
 		}
 		tmp = tmp->next;
 	}
-	while ((*b)->value != best->value || best->t_value != ft_lstlast(a)->value)
-	{
-		if ((*b)->value != best->value && best->index <= ft_lstsize(b) / 2
-			&& best->t_value != ft_lstlast(a)->value && best->t_index <= ft_lstsize(a) / 2)
-			rr(a, b);
-		else if ((*b)->value != best->value && best->index > ft_lstsize(b) / 2
-			&& best->t_value != ft_lstlast(a)->value && best->t_index > ft_lstsize(a) / 2)
-			rrr(a, b);
-		else if ((*b)->value != best->value)
-		{
-			if (best->index > ft_lstsize(b) / 2)
-				rrb(b);
-			else
-				rb(b);
-		}
-		else
-		{
-			if (best->t_index > ft_lstsize(a) / 2)
-				rra(a);
-			else
-				ra(a);
-		}
-	}
+	do_best(a, b, best);
 }
 
 void	solve(t_Node **a, t_Node **b)

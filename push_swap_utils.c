@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/11 00:41:26 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/19 18:16:56 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	check_index(t_Node **a, t_Node **b, t_Node *best)
 	int	index;
 	int	t_index;
 
-	index = best->index;
-	t_index = best->t_index;
+	index = best->i;
+	t_index = best->t_i;
 	if (index > ft_lstsize(b) / 2 && t_index > ft_lstsize(a) / 2)
 		return (3);
 	if (index > ft_lstsize(b) / 2)

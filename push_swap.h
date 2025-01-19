@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 20:51:34 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/10 23:51:48 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/19 17:56:54 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 typedef struct s_Node
 {
 	int				rank;
-	int				index;
+	int				i;
 	int				value;
 	int				t_value;
-	int				t_index;
+	int				t_i;
 	int				cost;
 	struct s_Node	*next;
 }	t_Node;
@@ -51,7 +51,11 @@ void	rrb(t_Node **b);
 void	rrr(t_Node **a, t_Node **b);
 
 int		check(t_Node **a);
+
 void	solve(t_Node **a, t_Node **b);
+int		get_tcost(t_Node *ta, t_Node *tb);
+void	do_best(t_Node **a, t_Node **b, t_Node *best);
+
 void	simple_sort(t_Node **a, t_Node **b);
 void	sort3(t_Node **a);
 
