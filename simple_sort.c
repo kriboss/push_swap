@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:57:19 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/11 00:40:57 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/21 18:01:29 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,57 +44,46 @@ void	sort3(t_Node **a)
 void	sort4(t_Node **a, t_Node **b)
 {
 	ranking(a);
+	while ((*a)->rank != 1)
+	{
+		ra(a);
+	}
 	pb(a, b);
 	sort3(a);
-	while ((*b)->rank != ft_lstlast(a)->rank + 1 && (*b)->rank != 1)
-	{
-		if ((*b)->rank - 1 == (*a)->rank)
-			ra(a);
-		else
-			rra(a);
-	}
 	pa(a, b);
-	while (check(a) == 0)
-	{
-		if ((*a)->rank >= 3)
-			ra(a);
-		else
-			rra(a);
-	}
 }
 
 void	sort5(t_Node **a, t_Node **b)
 {
 	ranking(a);
+	if (ft_lstlast(a)->rank == 1)
+		rra(a);
+	while ((*a)->rank != 1)
+		ra(a);
 	pb(a, b);
-	sort4(a, b);
-	while ((*b)->rank != ft_lstlast(a)->rank + 1 && (*b)->rank != 1)
-	{
-		if ((*b)->rank - 1 == (*a)->rank)
-			ra(a);
-		else
-			rra(a);
-	}
+	if (ft_lstlast(a)->rank == 2)
+		rra(a);
+	while ((*a)->rank != 2)
+		ra(a);
+	pb(a, b);
+	sort3(a);
 	pa(a, b);
-	while (check(a) == 0)
-	{
-		if ((*a)->rank >= 3)
-			ra(a);
-		else
-			rra(a);
-	}
+	pa(a, b);
 }
 
 void	simple_sort(t_Node **a, t_Node **b)
 {
-	if (ft_lstsize(a) == 2)
-		sort2(a);
-	else if (ft_lstsize(a) == 3)
-		sort3(a);
-	else if (ft_lstsize(a) == 4)
-		sort4(a, b);
-	else if (ft_lstsize(a) == 5)
-		sort5(a, b);
-	else
-		solve(a, b);
+	if (check(a) == 0)
+	{
+		if (ft_lstsize(a) == 2)
+			sort2(a);
+		else if (ft_lstsize(a) == 3)
+			sort3(a);
+		else if (ft_lstsize(a) == 4)
+			sort4(a, b);
+		else if (ft_lstsize(a) == 5)
+			sort5(a, b);
+		else
+			solve(a, b);
+	}
 }
