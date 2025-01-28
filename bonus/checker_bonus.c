@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 00:09:39 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/11 00:40:33 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/28 22:27:00 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,10 @@ int	main(int argc, char *argv[])
 
 	i = 0;
 	if (check_input(argc, argv) == 1)
-		return (1);
+		return (write(2, "Error\n", 6), 1);
 	a = create_stack(argc, argv);
+	if (!a || check_doubles(&a) == 0)
+		return (free_lst(&a), write(2, "Error\n", 6), 1);
 	b = NULL;
 	count = ft_itoa(checker(a, b));
 	write(1, "operations : ", 12);

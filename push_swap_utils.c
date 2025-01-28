@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/28 21:42:43 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/28 22:04:17 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,10 @@ int	*pop_str(int argc, char *argv[])
 			return (free(numbers), NULL);
 		i++;
 	}
-	while ((argc == 2) && (--i != 0))
-		free(str[i]);
+	while ((argc == 2) && (i != 0))
+		free(str[--i]);
+	if (argc == 2)
+		free(str);
 	return (numbers);
 }
 
