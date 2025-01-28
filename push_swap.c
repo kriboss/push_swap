@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:32:40 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/19 18:12:35 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/28 21:48:22 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,15 @@ int	main(int argc, char *argv[])
 
 	i = 0;
 	if (check_input(argc, argv))
-	{
-		write(1, "Error\n", 6);
-		return (1);
-	}
+		return (write(1, "Error\n", 6), 1);
 	numbers = (int *)malloc(sizeof(int) * (argc - 1));
 	if (!numbers)
-		return (1);
+		return (write(1, "Error\n", 6), 1);
 	a = create_stack(argc, argv);
+	if (!a || check_doubles(&a) == 0)
+		return (write(1, "Error\n", 6), 1);
 	b = NULL;
 	simple_sort(&a, &b);
-	t_Node	*tmp = a;
-	while (tmp)
-	{
-		printf("value: %d\n", tmp->value);
-		tmp = tmp->next;
-	}
 	free_lst(&a);
 	free_lst(&b);
 	return (0);

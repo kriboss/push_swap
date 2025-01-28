@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 20:51:34 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/19 17:56:54 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/28 21:47:14 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "get_next_line/get_next_line.h"
 
+# define IMAX 2147483647L
+# define IMIN 2147483648
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -29,15 +31,17 @@ typedef struct s_Node
 	struct s_Node	*next;
 }	t_Node;
 
+char	**ft_split(char const *s, char c);
+int		words(const char *s, char c);
+long	ft_atoi(const char *str);
+t_Node	*create_stack(int argc, char *argv[]);
+
 t_Node	*ft_lstnew(int value);
 void	free_lst(t_Node **a);
 t_Node	*ft_lstlast(t_Node **a);
 t_Node	*getmax(t_Node **a);
 int		ft_lstsize(t_Node **a);
 void	ranking(t_Node **a);
-int		check_index(t_Node **a, t_Node **b, t_Node *best);
-int		ft_atoi(const char *str);
-t_Node	*create_stack(int argc, char *argv[]);
 void	sa(t_Node **a);
 void	sb(t_Node **b);
 void	ss(t_Node **a, t_Node **b);
@@ -61,5 +65,6 @@ void	sort3(t_Node **a);
 
 char	*ft_itoa(int n);
 int		check_input(int argc, char *argv[]);
+int		check_doubles(t_Node **a);
 
 #endif

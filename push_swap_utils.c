@@ -6,11 +6,12 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/19 18:16:56 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/01/28 21:42:43 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	check(t_Node **a)
 {
@@ -28,49 +29,24 @@ int	check(t_Node **a)
 	return (1);
 }
 
-int	ft_atoi(const char *str)
+int	check_doubles(t_Node **a)
 {
-	unsigned int	i;
-	int				num;
-	int				segno;
-	int				cont;
+	t_Node	*temp;
+	t_Node	*temp2;
 
-	num = 0;
-	segno = 1;
-	i = 0;
-	cont = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	while (str[i] == '+' || str[i] == '-')
+	temp = *a;
+	while (temp)
 	{
-		if (++cont > 1)
-			return (0);
-		if (str[i] == '-')
-			segno = -segno;
-		i++;
+		temp2 = temp->next;
+		while (temp2)
+		{
+			if (temp->value == temp2->value)
+				return (0);
+			temp2 = temp2->next;
+		}
+		temp = temp->next;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = num * 10 + (str[i] - 48);
-		i++;
-	}
-	return (num * segno);
-}
-
-int	check_index(t_Node **a, t_Node **b, t_Node *best)
-{
-	int	index;
-	int	t_index;
-
-	index = best->i;
-	t_index = best->t_i;
-	if (index > ft_lstsize(b) / 2 && t_index > ft_lstsize(a) / 2)
-		return (3);
-	if (index > ft_lstsize(b) / 2)
-		return (1);
-	if (t_index > ft_lstsize(a) / 2)
-		return (0);
-	return (2);
+	return (1);
 }
 
 int	check_input(int argc, char *argv[])
@@ -80,16 +56,13 @@ int	check_input(int argc, char *argv[])
 
 	i = 1;
 	if (argc < 2)
-	{
-		write(1, "Error\n", 6);
 		return (1);
-	}
 	while (argv[i] != NULL)
 	{
 		j = 0;
 		while (argv[i][j])
 		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9')
+			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != ' '
 				&& argv[i][j] != '-' && argv[i][j] != '+')
 				return (1);
 			j++;
@@ -99,26 +72,48 @@ int	check_input(int argc, char *argv[])
 	return (0);
 }
 
+int	*pop_str(int argc, char *argv[])
+{
+	int		*numbers;
+	int		i;
+	char	**str;
+
+	i = 0;
+	numbers = (int *)malloc(sizeof(int) * words(argv[1], ' ') * argc - 1);
+	if (!numbers)
+		return (NULL);
+	if (argc == 2)
+		str = ft_split(argv[1], ' ');
+	else
+		str = argv + 1;
+	while (str[i])
+	{
+		numbers[i] = ft_atoi(str[i]);
+		if (numbers[i] == 0 && str[i][0] != '0' || ft_atoi(str[i]) == IMAX + 2)
+			return (free(numbers), NULL);
+		i++;
+	}
+	while ((argc == 2) && (--i != 0))
+		free(str[i]);
+	return (numbers);
+}
+
 t_Node	*create_stack(int argc, char *argv[])
 {
 	t_Node	*a;
 	t_Node	*tmp;
 	int		*numbers;
 	int		i;
+	int		count;
 
 	a = NULL;
-	numbers = (int *)malloc(sizeof(int) * (argc - 1));
+	i = 0;
+	numbers = pop_str(argc, argv);
 	if (!numbers)
 		return (NULL);
-	i = 0;
-	while (argc-- > 1)
+	count = (argc - 1) * words(argv[1], ' ');
+	while (count-- > 0)
 	{
-		numbers[i] = ft_atoi(argv[i + 1]);
-		if (numbers[i] == 0 && argv[i + 1][0] != '0')
-		{
-			free(numbers);
-			return (NULL);
-		}
 		tmp = ft_lstnew(numbers[i]);
 		if (!a)
 			a = tmp;
