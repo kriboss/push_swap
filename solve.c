@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:33:46 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/19 17:56:40 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/04 20:41:23 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,14 @@ void	solve(t_Node **a, t_Node **b)
 		best_move(a, b);
 		pa(a, b);
 	}
-	while (check(a) == 0)
-		ra(a);
+	if ((*a)->rank > ft_lstsize(a) / 2)
+	{
+		while (check(a) == 0)
+			ra(a);
+	}
+	else
+	{
+		while (check(a) == 0)
+			rra(a);
+	}
 }

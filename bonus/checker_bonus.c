@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 00:09:39 by kbossio           #+#    #+#             */
-/*   Updated: 2025/02/04 17:57:07 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/04 20:41:59 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,32 @@ void	print_error(t_Node **a, t_Node **b)
 		free_lst(b);
 }
 
-void	check_op(t_Node **a, t_Node **b, char *line)
+int	check_op(t_Node **a, t_Node **b, char *line)
 {
 	if (line[0] == 's' && line[1] == 'a')
-		sa(a);
+		return (sa(a), 0);
 	else if (line[0] == 's' && line[1] == 'b')
-		sb(b);
+		return (sb(b), 0);
 	else if (line[0] == 's' && line[1] == 's')
-		ss(a, b);
+		return (ss(a, b), 0);
 	else if (line[0] == 'p' && line[1] == 'a')
-		pa(a, b);
+		return (pa(a, b), 0);
 	else if (line[0] == 'p' && line[1] == 'b')
-		pb(a, b);
+		return (pb(a, b), 0);
 	else if (line[0] == 'r' && line[1] == 'a')
-		ra(a);
+		return (ra(a), 0);
 	else if (line[0] == 'r' && line[1] == 'b')
-		rb(b);
+		return (rb(b), 0);
 	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'a')
-		rra(a);
+		return (rra(a), 0);
 	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'b')
-		rrb(b);
+		return (rrb(b), 0);
 	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'r')
-		rrr(a, b);
+		return (rrr(a, b), 0);
 	else if (line[0] == 'r' && line[1] == 'r')
-		rr(a, b);
+		return (rr(a, b), 0);
 	else
-		print_error(a, b);
+		return (print_error(a, b), 1);
 }
 
 int	checker(t_Node *a, t_Node *b)
@@ -61,7 +61,8 @@ int	checker(t_Node *a, t_Node *b)
 	line = get_next_line(0);
 	while (line != NULL)
 	{
-		check_op(&a, &b, line);
+		if (check_op(&a, &b, line) == 1)
+			return (-1);
 		i++;
 		line = get_next_line(0);
 	}
@@ -90,6 +91,8 @@ int	main(int argc, char *argv[])
 		return (free_lst(&a), write(2, "Error\n", 6), 1);
 	b = NULL;
 	count = ft_itoa(checker(a, b));
+	if (count[0] == '-')
+		return (1);
 	write(1, "operations : ", 12);
 	while (count[i])
 		write(1, &count[i++], 1);
