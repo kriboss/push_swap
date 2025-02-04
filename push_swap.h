@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 20:51:34 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/28 21:47:14 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/04 17:26:24 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_Node
 }	t_Node;
 
 char	**ft_split(char const *s, char c);
+void	free_all(char **arr, int n);
 int		words(const char *s, char c);
 long	ft_atoi(const char *str);
 t_Node	*create_stack(int argc, char *argv[]);

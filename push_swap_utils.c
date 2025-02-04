@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/28 22:04:17 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/04 17:28:40 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ int	check_input(int argc, char *argv[])
 
 int	*pop_str(int argc, char *argv[])
 {
-	int		*numbers;
+	int		*num;
 	int		i;
 	char	**str;
 
 	i = 0;
-	numbers = (int *)malloc(sizeof(int) * words(argv[1], ' ') * argc - 1);
-	if (!numbers)
+	num = (int *)malloc(sizeof(int) * words(argv[1], ' ') * argc - 1);
+	if (!num)
 		return (NULL);
 	if (argc == 2)
 		str = ft_split(argv[1], ' ');
@@ -88,16 +88,16 @@ int	*pop_str(int argc, char *argv[])
 		str = argv + 1;
 	while (str[i])
 	{
-		numbers[i] = ft_atoi(str[i]);
-		if (numbers[i] == 0 && str[i][0] != '0' || ft_atoi(str[i]) == IMAX + 2)
-			return (free(numbers), NULL);
+		num[i] = ft_atoi(str[i]);
+		if ((num[i] == 0 && str[i][0] != '0') || ft_atoi(str[i]) == IMAX + 2)
+			return (free_all(str, i + 2), free(num), NULL);
 		i++;
 	}
 	while ((argc == 2) && (i != 0))
 		free(str[--i]);
 	if (argc == 2)
 		free(str);
-	return (numbers);
+	return (num);
 }
 
 t_Node	*create_stack(int argc, char *argv[])

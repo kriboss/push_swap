@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 18:20:23 by kbossio           #+#    #+#             */
-/*   Updated: 2025/01/28 21:46:56 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/04 17:30:08 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,30 @@
 long	ft_atoi(const char *str)
 {
 	unsigned int	i;
-	unsigned int	num;
-	int				segno;
-	int				cont;
+	long			num;
+	int				sgn;
+	int				c;
 
 	num = 0;
-	segno = 1;
+	sgn = 1;
 	i = 0;
-	cont = 0;
+	c = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	while (str[i] == '+' || str[i] == '-')
 	{
-		cont++;
+		c++;
 		if (str[i] == '-')
-			segno = -segno;
+			sgn = -sgn;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (cont > 1 || num > IMAX && segno == 1 || num > IMIN && segno == -1)
-			return (IMAX + 2);
 		num = num * 10 + (str[i++] - 48);
+		if (c > 1 || (num > IMAX && sgn == 1) || (num > IMIN && sgn == -1))
+			return (IMAX + 2);
 	}
-	return (num * segno);
+	return (num * sgn);
 }
 
 int	words(const char *s, char c)
