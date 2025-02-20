@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbossio <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:49:33 by kbossio           #+#    #+#             */
-/*   Updated: 2024/11/27 11:49:35 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/20 17:53:23 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static char	*trim_buffer(char *buffer)
 	}
 	str = malloc(sizeof(char) * (ft_strlen(buffer) - i));
 	if (!str)
-		return (NULL);
+		return (free(buffer), NULL);
 	while (buffer[++i])
 		str[j++] = buffer[i];
 	str[j] = '\0';
@@ -119,6 +119,11 @@ char	*get_next_line(int fd)
 	}
 	res = read_the_line(buffer);
 	buffer = trim_buffer(buffer);
+	if (!buffer || !*buffer)
+	{
+		free(buffer);
+		buffer = NULL;
+	}
 	return (res);
 }
 	//printf("\nres:%sbuffer:%s\n", res, buffer);

@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2025/02/04 17:28:40 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/20 19:02:29 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,11 @@ int	check_input(int argc, char *argv[])
 	return (0);
 }
 
-int	*pop_str(int argc, char *argv[])
+int	*pop_str(int argc, char *argv[], int i)
 {
 	int		*num;
-	int		i;
 	char	**str;
 
-	i = 0;
 	num = (int *)malloc(sizeof(int) * words(argv[1], ' ') * argc - 1);
 	if (!num)
 		return (NULL);
@@ -89,9 +87,12 @@ int	*pop_str(int argc, char *argv[])
 	while (str[i])
 	{
 		num[i] = ft_atoi(str[i]);
-		if ((num[i] == 0 && str[i][0] != '0') || ft_atoi(str[i]) == IMAX + 2)
-			return (free_all(str, i + 2), free(num), NULL);
-		i++;
+		if ((num[i] == 0 && str[i][0] != '0') || ft_atoi(str[i++]) == IMAX + 2)
+		{
+			if (argc == 2)
+				free_all(str, i + 2);
+			return (free(num), NULL);
+		}
 	}
 	while ((argc == 2) && (i != 0))
 		free(str[--i]);
@@ -110,7 +111,7 @@ t_Node	*create_stack(int argc, char *argv[])
 
 	a = NULL;
 	i = 0;
-	numbers = pop_str(argc, argv);
+	numbers = pop_str(argc, argv, i);
 	if (!numbers)
 		return (NULL);
 	count = (argc - 1) * words(argv[1], ' ');

@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 00:09:39 by kbossio           #+#    #+#             */
-/*   Updated: 2025/02/04 20:41:59 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/20 17:45:14 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,29 @@ void	print_error(t_Node **a, t_Node **b)
 int	check_op(t_Node **a, t_Node **b, char *line)
 {
 	if (line[0] == 's' && line[1] == 'a')
-		return (sa(a), 0);
+		return (free(line), sa(a), 0);
 	else if (line[0] == 's' && line[1] == 'b')
-		return (sb(b), 0);
+		return (free(line), sb(b), 0);
 	else if (line[0] == 's' && line[1] == 's')
-		return (ss(a, b), 0);
+		return (free(line), ss(a, b), 0);
 	else if (line[0] == 'p' && line[1] == 'a')
-		return (pa(a, b), 0);
+		return (free(line), pa(a, b), 0);
 	else if (line[0] == 'p' && line[1] == 'b')
-		return (pb(a, b), 0);
+		return (free(line), pb(a, b), 0);
 	else if (line[0] == 'r' && line[1] == 'a')
-		return (ra(a), 0);
+		return (free(line), ra(a), 0);
 	else if (line[0] == 'r' && line[1] == 'b')
-		return (rb(b), 0);
+		return (free(line), rb(b), 0);
 	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'a')
-		return (rra(a), 0);
+		return (free(line), rra(a), 0);
 	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'b')
-		return (rrb(b), 0);
+		return (free(line), rrb(b), 0);
 	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'r')
-		return (rrr(a, b), 0);
+		return (free(line), rrr(a, b), 0);
 	else if (line[0] == 'r' && line[1] == 'r')
-		return (rr(a, b), 0);
+		return (free(line), rr(a, b), 0);
 	else
-		return (print_error(a, b), 1);
+		return (free(line), print_error(a, b), 1);
 }
 
 int	checker(t_Node *a, t_Node *b)
@@ -55,9 +55,6 @@ int	checker(t_Node *a, t_Node *b)
 	int		i;
 
 	i = 0;
-	line = malloc(sizeof(char) * 4);
-	if (!line)
-		return (0);
 	line = get_next_line(0);
 	while (line != NULL)
 	{
@@ -70,10 +67,9 @@ int	checker(t_Node *a, t_Node *b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_lst(&a);
-	free_lst(&b);
-	free(line);
-	return (i);
+	if (ft_lstsize(&b) > 0)
+		free_lst(&b);
+	return (free_lst(&a), free(line), i);
 }
 
 int	main(int argc, char *argv[])
@@ -92,7 +88,7 @@ int	main(int argc, char *argv[])
 	b = NULL;
 	count = ft_itoa(checker(a, b));
 	if (count[0] == '-')
-		return (1);
+		return (free(count), 1);
 	write(1, "operations : ", 12);
 	while (count[i])
 		write(1, &count[i++], 1);

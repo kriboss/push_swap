@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 22:33:46 by kbossio           #+#    #+#             */
-/*   Updated: 2025/02/04 20:41:23 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/20 17:06:12 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	setup(t_Node **a, t_Node **b)
 	a_size = ft_lstsize(a);
 	while (ft_lstsize(a) >= a_size / 2 + 1)
 	{
-		if ((*a)->rank <= a_size / 2)
+		if ((*a)->rank <= a_size / 2 + 1)
 			pb(a, b);
 		else
 			ra(a);
