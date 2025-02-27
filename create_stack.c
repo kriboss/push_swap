@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 18:20:23 by kbossio           #+#    #+#             */
-/*   Updated: 2025/02/20 18:24:23 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/27 10:41:50 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	words(const char *s, char c)
 			in = 0;
 		s++;
 	}
+	if (n == 0)
+		return (1);
 	return (n);
 }
 

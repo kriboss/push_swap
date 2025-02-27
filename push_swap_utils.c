@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2025/02/20 19:02:29 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/02/27 12:52:57 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_input(int argc, char *argv[])
 
 	i = 1;
 	if (argc < 2)
-		return (1);
+		return (-1);
 	while (argv[i] != NULL)
 	{
 		j = 0;
