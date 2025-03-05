@@ -6,7 +6,7 @@
 /*   By: kbossio <kbossio@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:54:17 by kbossio           #+#    #+#             */
-/*   Updated: 2025/02/27 12:52:57 by kbossio          ###   ########.fr       */
+/*   Updated: 2025/03/05 11:02:12 by kbossio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,24 +80,22 @@ int	*pop_str(int argc, char *argv[], int i)
 	num = (int *)malloc(sizeof(int) * words(argv[1], ' ') * argc - 1);
 	if (!num)
 		return (NULL);
-	if (argc == 2)
+	if (argc == 2 && words(argv[1], ' ') > 1)
 		str = ft_split(argv[1], ' ');
 	else
 		str = argv + 1;
 	while (str[i])
 	{
 		num[i] = ft_atoi(str[i]);
-		if ((num[i] == 0 && str[i][0] != '0') || ft_atoi(str[i++]) == IMAX + 2)
+		if (ft_atoi(str[i++]) == IMAX + 2)
 		{
-			if (argc == 2)
+			if (argc == 2 && words(argv[1], ' ') > 1)
 				free_all(str, i + 2);
 			return (free(num), NULL);
 		}
 	}
-	while ((argc == 2) && (i != 0))
-		free(str[--i]);
-	if (argc == 2)
-		free(str);
+	if (argc == 2 && words(argv[1], ' ') > 1)
+		free_all(str, i);
 	return (num);
 }
 
